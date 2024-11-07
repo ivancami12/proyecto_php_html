@@ -1,243 +1,330 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Inicio Mejorada</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Fondo de pantalla completa para el encabezado */
-    .header {
-      height: 100vh;
-      background: url('../estilos/img/seagull-8996395_640.webp') no-repeat center center/cover;
-      background-attachment: fixed;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      opacity: 0;
-      animation: fadeInHeader 2s ease-in-out forwards;
-    }
-
-    @keyframes fadeInHeader {
-      to { opacity: 1; }
-    }
-
-
-    /* Título con animación */
-    .header h1 {
-      font-size: 3.5rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    /* Efecto de aparición suave */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Botón de acción con transición */
-    .btn-primary {
-      padding: 0.75rem 1.5rem;
-      font-size: 1.25rem;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
-
-    /* Sección de introducción con animación */
-    .intro-section {
-      padding: 4rem 2rem;
-      opacity: 0;
-      animation: slideUp 1s ease-in-out forwards;
-      animation-delay: 1s;
-    }
-
-    @keyframes fadeInUp {
-      from {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Inicio Mejorada</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/estilos/css/estilo_inicio.css" />
+    <style>
+      /* Fondo de pantalla completa para el encabezado */
+      .header {
+        position: relative;
+        height: 100vh;
+        background: url("../estilos/img/imagen5.jpg") no-repeat center
+          center/cover;
+        background-attachment: fixed;
+        color: rgb(48, 17, 255);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         opacity: 0;
-        transform: translateY(20px);
+        animation: fadeInHeader 2s ease-in-out forwards;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        /* Ajusta la opacidad aquí */
+        z-index: 1;
       }
-    }
 
-    /* Sección de servicios */
-    .services-section {
-      background-color: #f9f9f9;
-      padding: 4rem 2rem;
-    }
-    .service-card {
-      transition: transform 0.3s ease;
-      animation: fadeInUp 0.6s ease-in-out;
+      @keyframes fadeInHeader {
+        to {
+          opacity: 1;
+        }
+      }
 
-    }
-    .service-card:hover {
-      transform: translateY(-10px);
-    }
+      /* Título con animación */
+      .header h1,
+      .header p,
+      .header a {
+        position: relative;
+        z-index: 2;
+        /* Para que aparezca sobre la capa semi-transparente */
+      }
 
-    /* Sección de testimonios */
-    .testimonials-section {
-      padding: 4rem 2rem;
-      background-color: #f1f1f1;
-    }
-    .testimonial-card {
-      transition: transform 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: translateX(10px);
-    }
-    .service-card, .testimonial-card {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+      /* Efecto de aparición suave */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
 
-    /* Formulario de contacto */
-    .contact-form {
-      padding: 4rem 2rem;
-      background-color: #e9ecef;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .contact-form button:active {
-      background-color: #004085;
-      transform: scale(0.95);
-    }
+        to {
+          opacity: 1;
+        }
+      }
 
-    /* Pie de página */
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 2rem;
-    }
-    .footer a {
-      color: #f8f9fa;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer a:hover {
-      color: #007bff;
-    }
-  </style>
-</head>
-<body>
+      /* Botón de acción con transición */
+      .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        transition: background-color 0.3s, transform 0.3s;
+      }
 
-  <!-- Encabezado -->
-  <header class="header">
-    <h1>Bienvenido a Nuestra Página</h1>
-    <p class="lead">Innovación y tecnología a tu alcance</p>
-    <a href="#intro" class="btn btn-primary mt-3">Explora Más</a>
-  </header>
+      .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
 
-  <!-- Sección de Introducción -->
-  <section id="intro" class="intro-section text-center">
-    <div class="container">
-      <h2 class="mb-4">¿Quiénes Somos?</h2>
-      <p class="lead">Somos una empresa líder en soluciones tecnológicas personalizadas. Nuestro objetivo es ayudarte a alcanzar el éxito con nuestras herramientas innovadoras.</p>
-    </div>
-  </section>
+      /* Sección de introducción con animación */
+      .intro-section {
+        padding: 4rem 2rem;
+        opacity: 0;
+        animation: slideUp 1s ease-in-out forwards;
+        animation-delay: 1s;
+      }
 
-  <!-- Sección de Servicios -->
-  <section id="services" class="services-section text-center">
-    <div class="container">
-      <h2 class="mb-4">Nuestros Servicios</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card service-card">
-            <div class="card-body">
-              <h5 class="card-title">Desarrollo Web</h5>
-              <p class="card-text">Creamos sitios web modernos, rápidos y eficientes que se adaptan a las necesidades de tu negocio.</p>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Sección de servicios */
+      .services-section {
+        background-color: #f9f9f9;
+        padding: 4rem 2rem;
+      }
+
+      .service-card {
+        transition: transform 0.3s ease;
+        animation: fadeInUp 0.6s ease-in-out;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Sección de testimonios */
+      .testimonials-section {
+        padding: 4rem 2rem;
+        background-color: #f1f1f1;
+      }
+
+      .testimonial-card {
+        transition: transform 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateX(10px);
+      }
+
+      .service-card,
+      .testimonial-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Formulario de contacto */
+      .contact-form {
+        padding: 4rem 2rem;
+        background-color: #e9ecef;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .contact-form button:active {
+        background-color: #004085;
+        transform: scale(0.95);
+      }
+
+      /* Pie de página */
+      .footer {
+        background-color: #343a40;
+        color: white;
+        padding: 2rem;
+      }
+
+      .footer a {
+        color: #f8f9fa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #007bff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Encabezado -->
+    <header class="header">
+      <h1>Bienvenido a mi pagina de inicio</h1>
+      <p class="lead">
+        Se trata de una prueba html con implementación bootstrap
+      </p>
+      <p class="lead">Un pequeño proyectado en la inpiracion de mi vida</p>
+      <a href="#intro" class="btn btn-primary mt-3"
+        >Explora Más Sobre El Sitio</a
+      >
+    </header>
+
+    <!-- Sección de Introducción -->
+    <section id="intro" class="intro-section text-center">
+      <div class="container">
+        <h2 class="mb-4">¿Quiénes Somos?</h2>
+        <p class="lead">
+          Somos una empresa líder en soluciones tecnológicas personalizadas.
+          Nuestro objetivo es ayudarte a alcanzar el éxito con nuestras
+          herramientas innovadoras.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="services" class="services-section text-center">
+      <div class="container">
+        <h2 class="mb-4">Tarjetas De Acceso rapido</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card service-card">
+              <div class="card-body">
+                <h5 class="card-title">Poemas</h5>
+                <p class="card-text">
+                  Cree un sitio web moderno y poco presentativo, quizas nadie ve
+                  el sentimiento que se dedica para el amor, las pequeñas cosas
+                  que nadie ve.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card service-card">
-            <div class="card-body">
-              <h5 class="card-title">Consultoría IT</h5>
-              <p class="card-text">Ofrecemos servicios de consultoría para optimizar tus procesos y mejorar la eficiencia de tu infraestructura tecnológica.</p>
+          <div class="col-md-4">
+            <div class="card service-card">
+              <div class="card-body">
+                <h5 class="card-title">Detalles Para Regalar</h5>
+                <p class="card-text">Ofrecemos ideas para Regalar</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card service-card">
-            <div class="card-body">
-              <h5 class="card-title">Marketing Digital</h5>
-              <p class="card-text">Potenciamos tu presencia online con estrategias de marketing digital efectivas para tu empresa.</p>
+          <div class="col-md-4">
+            <div class="card service-card">
+              <div class="card-body">
+                <h5 class="card-title">Marketing Digital</h5>
+                <p class="card-text">
+                  Potenciamos tu presencia online con estrategias de marketing
+                  digital efectivas para tu empresa.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Sección de Testimonios -->
-  <section id="testimonials" class="testimonials-section text-center">
-    <div class="container">
-      <h2 class="mb-4">Lo que Dicen Nuestros Clientes</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card testimonial-card">
-            <div class="card-body">
-              <p class="card-text">"El servicio de desarrollo web fue increíble, nos ayudaron a mejorar la experiencia de usuario en nuestro sitio."</p>
-              <h5 class="card-title">Cliente 1</h5>
+    <!-- Sección de Testimonios -->
+    <section id="testimonials" class="testimonials-section text-center">
+      <div class="container">
+        <h2 class="mb-4">Lo que Dicen Nuestros Clientes</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card testimonial-card">
+              <div class="card-body">
+                <p class="card-text">
+                  "El servicio de desarrollo web fue increíble, nos ayudaron a
+                  mejorar la experiencia de usuario en nuestro sitio."
+                </p>
+                <h5 class="card-title">Cliente 1</h5>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card testimonial-card">
-            <div class="card-body">
-              <p class="card-text">"Gracias a la consultoría IT, nuestra infraestructura es mucho más eficiente y confiable."</p>
-              <h5 class="card-title">Cliente 2</h5>
+          <div class="col-md-4">
+            <div class="card testimonial-card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Gracias a la consultoría IT, nuestra infraestructura es mucho
+                  más eficiente y confiable."
+                </p>
+                <h5 class="card-title">Cliente 2</h5>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card testimonial-card">
-            <div class="card-body">
-              <p class="card-text">"Las estrategias de marketing digital realmente nos ayudaron a aumentar nuestra presencia en línea."</p>
-              <h5 class="card-title">Cliente 3</h5>
+          <div class="col-md-4">
+            <div class="card testimonial-card">
+              <div class="card-body">
+                <p class="card-text">
+                  "Las estrategias de marketing digital realmente nos ayudaron a
+                  aumentar nuestra presencia en línea."
+                </p>
+                <h5 class="card-title">Cliente 3</h5>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Formulario de Contacto -->
-  <section id="contact" class="contact-form text-center">
-    <div class="container">
-      <h2 class="mb-4">Contáctanos</h2>
-      <form>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico" required>
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" id="message" rows="3" placeholder="Tu mensaje" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
-    </div>
-  </section>
+    <!-- Formulario de Contacto -->
+    <section id="contact" class="contact-form text-center">
+      <div class="container">
+        <h2 class="mb-4">Contáctanos</h2>
+        <form>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Tu correo electrónico"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              id="message"
+              rows="3"
+              placeholder="Tu mensaje"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </section>
 
-  <!-- Pie de Página -->
-  <footer class="footer text-center">
-    <p>&copy; 2024 Empresa. Todos los derechos reservados.</p>
-    <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a>
-    <div>
-      <a href="#" class="btn btn-link"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="#" class="btn btn-link"><i class="fab fa-twitter"></i> Twitter</a>
-      <a href="#" class="btn btn-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-  </footer>
+    <!-- Pie de Página -->
+    <footer class="footer text-center">
+      <p>&copy; 2024 Empresa. Todos los derechos reservados.</p>
+      <a href="#">Política de Privacidad</a> | <a href="#">Términos de Uso</a>
+      <div>
+        <a href="#" class="btn btn-link"
+          ><i class="fab fa-facebook"></i> Facebook</a
+        >
+        <a href="#" class="btn btn-link"
+          ><i class="fab fa-twitter"></i> Twitter</a
+        >
+        <a href="#" class="btn btn-link"
+          ><i class="fab fa-linkedin"></i> LinkedIn</a
+        >
+      </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome para íconos -->
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- FontAwesome para íconos -->
+  </body>
 </html>
