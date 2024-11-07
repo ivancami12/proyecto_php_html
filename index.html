@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="estilos/css/estilo.css">
+    <style>
+        /* Estilos personalizados */
+        body {
+            background: linear-gradient(to right, #f2f2f2, #e6e6e6);
+        }
+
+        .sidebar {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #1e80e2;
+        }
+
+        .content {
+            transition: margin-left 0.5s;
+            margin-left: 15px;
+        }
+
+        /* Estilo para las tarjetas */
+        .card {
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-title i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none; /* Oculta la sidebar en pantallas pequeñas */
+            }
+
+            .content {
+                margin-left: 0; /* Alinea el contenido en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #1e80e2;">
+            <a class="navbar-brand" href="#">Mi Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Más
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Ayuda</a>
+                            <a class="dropdown-item" href="#">Soporte</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Cerrar sesión</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Configuración</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Cuadro de Información -->
+        <div class="alert alert-info text-center mt-3" role="alert">
+            <h4 class="alert-heading">Información Importante</h4>
+            <p>Este es un cuadro de información que puedes utilizar para mostrar mensajes importantes a los usuarios. Puedes actualizarlo según sea necesario.</p>
+        </div>
+
+        <!-- Menú lateral (sidebar) -->
+        <div class="sidebar d-none d-md-block">
+            <h4 class="text-center">Menú</h4>
+            <a href="inicio/inicio.html">Inicio</a>
+            <a href="inicio/informacion.html">Estadísticas</a>
+            <a href="#">Usuarios</a>
+            <a href="#">Configuración</a>
+            <a href="#">Ayuda</a>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center my-4">Bienvenido al Dashboard</h2>
+                    <p>Este es el panel principal donde puedes ver información relevante del sistema.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Gráfico de Ventas -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title"><i class="fas fa-chart-line"></i>Ventas del Mes</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="ventasChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuadro de Lista con Scroll -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title"><i class="fas fa-tasks"></i>Lista de Tareas</h5>
+                        </div>
+                        <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+                            <ul class="list-group" id="listaTareas">
+                                <li class="list-group-item">Tarea 1</li>
+                                <li class="list-group-item">Tarea 2</li>
+                                <li class="list-group-item">Tarea 3</li>
+                                <li class="list-group-item">Tarea 4</li>
+                                <li class="list-group-item">Tarea 5</li>
+                                <li class="list-group-item">Tarea 6</li>
+                                <li class="list-group-item">Tarea 7</li>
+                                <li class="list-group-item">Tarea 8</li>
+                                <li class="list-group-item">Tarea 9</li>
+                                <li class="list-group-item">Tarea 10</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Tarjetas Informativas -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-users"></i>Usuarios Registrados</h5>
+                            <p class="card-text">150</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-dollar-sign"></i>Ventas del Mes</h5>
+                            <p class="card-text">$12,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-danger mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-exclamation-triangle"></i>Soporte Pendiente</h5>
+                            <p class="card-text">23 casos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección exclusiva para administrador -->
+            <div class="admin-info" style="display: none;">
+                <h3 class="text-center mt-4">Sección Exclusiva del Administrador</h3>
+                <p>Información confidencial solo para administradores.</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-info mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Reportes Mensuales</h5>
+                                <p class="card-text">Detalles confidenciales sobre el desempeño mensual.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-warning mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Usuarios Administradores</h5>
+                                <p class="card-text">5 usuarios con privilegios avanzados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para mostrar/ocultar sección de administrador -->
+            <div class="text-center mt-4">
+                <button id="toggleAdmin" class="btn btn-secondary">Mostrar/Ocultar Información de Administrador</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Script para el gráfico de ventas
+        var ctx = document.getElementById('ventasChart').getContext('2d');
+        var ventasChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [12000, 19000, 15000, 22000, 20000],
+                    backgroundColor: 'rgba(30, 128, 226, 0.7)',
+                    borderColor: 'rgba(30, 128, 226, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Script para mostrar/ocultar sección de administrador
+        document.getElementById('toggleAdmin').addEventListener('click', function() {
+            var adminSection = document.querySelector('.admin-info');
+            if (adminSection.style.display === 'none' || adminSection.style.display === '') {
+                adminSection.style.display = 'block';
+            } else {
+                adminSection.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
