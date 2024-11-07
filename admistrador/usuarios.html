@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usuarios</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../estilos/css/estilo.css" />
+  </head>
+
+  <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="dashboard.html">Mi Dashboard</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Más
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Ayuda</a>
+              <a class="dropdown-item" href="#">Soporte</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Cerrar sesión</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Configuración</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <!-- Cuadro de Información -->
+      <div class="alert alert-info text-center" role="alert">
+        <h4 class="alert-heading">Información Importante</h4>
+        <p>
+          Este es un cuadro de información que puedes utilizar para mostrar
+          mensajes importantes a los usuarios. Puedes actualizarlo según sea
+          necesario.
+        </p>
+      </div>
+
+      <div class="row">
+        <!-- Menú lateral (sidebar) con colapso en pantallas pequeñas -->
+        <div class="col-md-3">
+          <button
+            class="btn btn-primary d-md-none"
+            type="button"
+            data-toggle="collapse"
+            data-target="#sidebarMenu"
+            aria-expanded="false"
+            aria-controls="sidebarMenu"
+          >
+            Menú
+          </button>
+          <div class="collapse d-md-block" id="sidebarMenu">
+            <div class="list-group">
+              <h4 class="text-center">Menú</h4>
+              <a
+                href="inicio/inicio.html"
+                class="list-group-item list-group-item-action"
+                >Inicio</a
+              >
+              <a
+                href="inicio/informacion.html"
+                class="list-group-item list-group-item-action"
+                >Estadísticas</a
+              >
+              <a href="#" class="list-group-item list-group-item-action"
+                >Usuarios</a
+              >
+              <a href="#" class="list-group-item list-group-item-action"
+                >Configuración</a
+              >
+              <a href="#" class="list-group-item list-group-item-action"
+                >Ayuda</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="col-md-9">
+          <h1 class="h2">Gestión de Usuarios</h1>
+          <div class="mb-3">
+            <a href="agregar_usuario.html" class="btn btn-success">
+              <i class="bi bi-person-plus"></i> Agregar Usuario
+            </a>
+          </div>
+
+          <!-- Tabla de Usuarios -->
+          <h3>Lista de Usuarios</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Juan Pérez</td>
+                <td>juan@example.com</td>
+                <td>Admin</td>
+                <td>
+                  <a href="editar_usuario.html?id=1" class="btn btn-primary"
+                    >Editar</a
+                  >
+                  <button class="btn btn-danger" onclick="eliminarUsuario(1)">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ana García</td>
+                <td>ana@example.com</td>
+                <td>Editor</td>
+                <td>
+                  <a href="editar_usuario.html?id=2" class="btn btn-primary"
+                    >Editar</a
+                  >
+                  <button class="btn btn-danger" onclick="eliminarUsuario(2)">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Gráfico de Ventas -->
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">
+                <i class="fas fa-chart-line"></i> Ventas del Mes
+              </h5>
+            </div>
+            <div class="card-body">
+              <canvas id="ventasChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Lista de Tareas -->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">
+                <i class="fas fa-tasks"></i> Lista de Tareas
+              </h5>
+            </div>
+            <div class="card-body" style="max-height: 200px; overflow-y: auto">
+              <ul class="list-group" id="listaTareas">
+                <li class="list-group-item">Tarea 1</li>
+                <li class="list-group-item">Tarea 2</li>
+                <li class="list-group-item">Tarea 3</li>
+                <li class="list-group-item">Tarea 4</li>
+                <li class="list-group-item">Tarea 5</li>
+                <li class="list-group-item">Tarea 6</li>
+                <li class="list-group-item">Tarea 7</li>
+                <li class="list-group-item">Tarea 8</li>
+                <li class="list-group-item">Tarea 9</li>
+                <li class="list-group-item">Tarea 10</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      // Script para el gráfico de ventas
+      var ctx = document.getElementById("ventasChart").getContext("2d");
+      var ventasChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo"],
+          datasets: [
+            {
+              label: "Ventas",
+              data: [12000, 19000, 15000, 22000, 20000],
+              backgroundColor: "rgba(30, 128, 226, 0.7)",
+              borderColor: "rgba(30, 128, 226, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      // Función para eliminar usuario
+      function eliminarUsuario(id) {
+        if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+          // Aquí iría el código para eliminar el usuario de la base de datos
+          console.log("Usuario " + id + " eliminado");
+        }
+      }
+    </script>
+  </body>
+</html>

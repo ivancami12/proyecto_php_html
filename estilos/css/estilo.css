@@ -1,96 +1,101 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-.container-fluid {
-  flex: 1;
-}
-.sidebar {
-  height: 100vh;
+/* Barra de navegación fija */
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
-  background-color: hwb(210 22% 9%);
-  color: white;
-  padding-top: 1rem;
+  right: 0;
+  z-index: 999;
 }
+
+/* Espacio para la navegación fija */
+body {
+  padding-top: 70px;
+}
+
+/* Barra lateral (sidebar) con color azul claro */
+.sidebar {
+  background-color: #cce5ff; /* Azul claro */
+  height: 100vh;
+  padding-top: 20px;
+}
+
 .sidebar a {
-  color: white;
-  text-decoration: none;
   display: block;
-  padding: 10px 15px;
+  padding: 10px;
+  color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
+
 .sidebar a:hover {
-  background-color: hsl(210, 79%, 56%);
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
 }
-.content {
-  margin-left: 250px;
-  padding: 20px;
-}
+
+/* Estilo de las tarjetas */
 .card {
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-.section {
-  margin-bottom: 30px; /* Espacio entre secciones */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-nav .nav-link {
-  transition: color 0.3s ease;
+/* Colores llamativos para las tarjetas */
+.bg-primary {
+  background-color: #007bff !important; /* Azul */
 }
 
-.navbar-nav .nav-link:hover {
-  color: #ffcc00; /* Color al pasar el ratón */
+.bg-success {
+  background-color: #28a745 !important; /* Verde */
 }
 
-.dropdown-menu {
-  background-color: #1e80e2; /* Color del fondo del menú desplegable */
+.bg-danger {
+  background-color: #dc3545 !important; /* Rojo */
 }
 
-.dropdown-item:hover {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Color al pasar el ratón sobre los elementos del menú */
-}
-@keyframes slideDownUp {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
+.bg-info {
+  background-color: #17a2b8 !important; /* Azul claro */
 }
 
-.slide-animation {
-  animation: slideDownUp 3s forwards; /* Duración de 3 segundos */
-}
-/* Animación de bajar y subir */
-@keyframes slideDown {
-  0% {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.bg-warning {
+  background-color: #ffc107 !important; /* Amarillo */
 }
 
-#listaTareas {
-  animation: slideDown 3s ease-in-out forwards;
-  opacity: 0; /* Inicia invisible */
+/* Animaciones y transiciones para la página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  transition: background-color 0.5s ease;
+}
+
+h2,
+h3 {
+  transition: transform 0.5s ease;
+}
+
+h2:hover,
+h3:hover {
+  transform: translateY(-10px);
+}
+
+/* Mejorar la visibilidad de la sección del administrador */
+.admin-info {
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Botón de mostrar/ocultar información */
+#toggleAdmin {
+  transition: background-color 0.3s ease;
+}
+
+#toggleAdmin:hover {
+  background-color: #007bff;
+  color: white;
 }

@@ -1,10 +1,10 @@
 /* Fondo de pantalla completa para el encabezado */
 .header {
+  position: relative;
   height: 100vh;
-  background: url("../estilos/img/seagull-8996395_640.webp") no-repeat center
-    center/cover;
+  background: url("../img/imagen5.jpg") no-repeat center center/cover;
   background-attachment: fixed;
-  color: white;
+  color: rgb(48, 17, 255);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +14,17 @@
   animation: fadeInHeader 2s ease-in-out forwards;
 }
 
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
 @keyframes fadeInHeader {
   to {
     opacity: 1;
@@ -21,9 +32,11 @@
 }
 
 /* Título con animación */
-.header h1 {
-  font-size: 3.5rem;
-  animation: fadeIn 2s ease-in-out;
+.header h1,
+.header p,
+.header a {
+  position: relative;
+  z-index: 2;
 }
 
 /* Efecto de aparición suave */
@@ -42,6 +55,7 @@
   font-size: 1.25rem;
   transition: background-color 0.3s, transform 0.3s;
 }
+
 .btn-primary:hover {
   background-color: #0056b3;
   transform: scale(1.05);
@@ -55,26 +69,17 @@
   animation-delay: 1s;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Sección de servicios */
 .services-section {
   background-color: #f9f9f9;
   padding: 4rem 2rem;
 }
+
 .service-card {
   transition: transform 0.3s ease;
   animation: fadeInUp 0.6s ease-in-out;
 }
+
 .service-card:hover {
   transform: translateY(-10px);
 }
@@ -84,39 +89,132 @@
   padding: 4rem 2rem;
   background-color: #f1f1f1;
 }
+
 .testimonial-card {
   transition: transform 0.3s ease;
 }
+
 .testimonial-card:hover {
   transform: translateX(10px);
-}
-.service-card,
-.testimonial-card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Formulario de contacto */
 .contact-form {
   padding: 4rem 2rem;
-  background-color: #e9ecef;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.contact-form button:active {
-  background-color: #004085;
-  transform: scale(0.95);
+  background-color: #f9f9f9;
 }
 
-/* Pie de página */
 .footer {
-  background-color: #343a40;
-  color: white;
   padding: 2rem;
+  background-color: #333;
+  color: white;
 }
 .footer a {
-  color: #f8f9fa;
+  color: #ddd;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
+
 .footer a:hover {
-  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Estilos generales */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+/* Estilos para la barra de navegación */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1rem 0;
+}
+
+.navbar .navbar-brand {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #0056b3;
+  border-radius: 5px;
+}
+
+/* Añadir un poco de margen superior para que no se solape con el encabezado */
+body {
+  padding-top: 80px;
+}
+
+/* Barra de navegación fija */
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+/* Estilo para el título de la sección FAQ */
+h2.text-center {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* Personalizar los botones del acordeón */
+.accordion-button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  font-weight: bold;
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 1rem; /* Espaciado interno */
+  transition: background-color 0.3s ease; /* Transición suave al hacer hover */
+}
+
+.accordion-button:hover {
+  background-color: #0056b3; /* Cambiar el color al hacer hover */
+}
+
+/* Estilo para los elementos del acordeón cuando se expanden */
+.accordion-body {
+  background-color: #f8f9fa; /* Color de fondo de la respuesta */
+  color: #555; /* Color del texto */
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+/* Cambiar el color del icono cuando está abierto o cerrado */
+.accordion-button:not(.collapsed) {
+  background-color: #0056b3; /* Color de fondo cuando está abierto */
+}
+
+.accordion-button.collapsed {
+  background-color: #007bff; /* Color de fondo cuando está cerrado */
+}
+
+/* Estilo para los elementos del acordeón */
+.accordion-item {
+  margin-bottom: 1rem; /* Espaciado entre los ítems */
+}
+
+/* Estilo adicional para los textos de la respuesta */
+.accordion-body {
+  font-size: 1rem;
+  line-height: 1.6;
 }
